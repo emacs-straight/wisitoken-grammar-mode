@@ -1,6 +1,8 @@
 #!/bin/sh
 # Build and install executables for WisiToken grammar mode.
 #
+# See install.sh for install
+#
 # Copyright (C) 2017 - 2019  Free Software Foundation, Inc.
 # This file is part of GNU Emacs.
 
@@ -19,12 +21,8 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-
-export GPR_PROJECT_PATH=`ls -d ../wisi-3.1.?`
-
-gnatprep -DELPA="yes" wisitoken_grammar.gpr.gp wisitoken_grammar.gpr
-
-gprbuild -p -j8 -P wisitoken_grammar.gpr
-gprinstall -f -p -P wisitoken_grammar.gpr --install-name=wisitoken_grammar
+echo "building wisitoken-grammar-mode executables via Alire"
+alr get emacs_wisitoken_grammar_mode~1.3.0
+cd emacs_wisitoken_grammar_mode*; alr build --release
 
 # end of file
